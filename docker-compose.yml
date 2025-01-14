@@ -29,40 +29,38 @@ services:
 
   redis:
     image: redis:alpine
-    container_name: redis
     ports:
       - "6379:6379"
     networks:
       - platform_network
 
-  ollama:
-    image: ollama/ollama:0.5.1
-    container_name: ollama
-    ports:
-      - "11434:11434"
-    volumes:
-      - ~/.cache/huggingface:/root/.cache/huggingface
-    networks:
-      - platform_network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  # ollama:
+  #   image: ollama/ollama:0.5.1
+  #   container_name: ollama
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ~/.cache/huggingface:/root/.cache/huggingface
+  #   networks:
+  #     - platform_network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
 
-  mysql:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: Spanda@123
-      MYSQL_DATABASE: feedbackDb
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - platform_network
+  # mysql:
+  #   image: mysql:8.0
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: Spanda@123
+  #     MYSQL_DATABASE: feedbackDb
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   networks:
+  #     - platform_network
 
 volumes:
   mysql_data:
