@@ -20,6 +20,10 @@ ROOT_DIR=$(pwd)
 echo "🌐 Creating platform network if it doesn't exist..."
 docker network inspect platform_network >/dev/null 2>&1 || docker network create platform_network
 
+
+echo "🌐 Creating app_network if it doesn't exist..."
+docker network inspect app_network >/dev/null 2>&1 || docker network create app_network
+
 echo "🚀 Starting main services with Docker Compose..."
 docker compose up -d
 
