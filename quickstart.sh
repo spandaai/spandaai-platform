@@ -49,10 +49,11 @@ cd dockprom && docker compose ps
 echo "🎉 Deployment complete! All services are now running."
 echo "
 📝 Access points:
-- Grafana: http://localhost:3000 (admin/admin)
+- Grafana: http://localhost:3000 (username - admin/ password - admin)
 - Prometheus: http://localhost:9090
 - AlertManager: http://localhost:9093
-- Kafka: localhost:9092
-- Redis: localhost:6379
-- MySQL: localhost:3306
-- Ollama: http://localhost:11434"
+- Kafka: http://localhost:9092
+- Redis: http://localhost:6379
+- MySQL: http://localhost:3306
+- Ollama: http://localhost:11434
+- Verba: http://localhost:8000"
