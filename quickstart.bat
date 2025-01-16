@@ -23,13 +23,7 @@ docker network inspect app_network >nul 2>&1 || docker network create app_networ
 echo 🚀 Starting main services with Docker Compose...
 docker compose up -d
 
-echo 📂 Changing to dockprom directory...
-if not exist "dockprom" (
-    echo ❌ Error: dockprom directory not found!
-    echo Creating dockprom directory...
-    mkdir dockprom
-)
-cd dockprom
+cd components/dockprom
 
 echo 🚀 Starting monitoring services in dockprom...
 docker compose up -d

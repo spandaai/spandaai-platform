@@ -28,7 +28,7 @@ echo "🚀 Starting main services with Docker Compose..."
 docker compose up -d
 
 echo "📂 Changing to dockprom directory..."
-cd dockprom || {
+cd components/dockprom || {
     echo "❌ Error: dockprom directory not found!"
     echo "Creating dockprom directory..."
     mkdir dockprom
