@@ -25,8 +25,14 @@ For detailed guides, best practices, and contribution guidelines, please refer t
 
 3. **Run the Application:**
 
+For Windows 
    ```bash
-   # Command to start the application
+  ./quickstart.bat
+   ```
+
+For Linux/MacOS
+   ```bash
+  ./quickstart.sh
    ```
 
 ## Features
