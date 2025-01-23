@@ -1,0 +1,248 @@
+:root {
+  --black: #000000;
+  --white: #FFFFFF;
+  --gold: #FFBF00;
+  --dark-grey: #0A0A0A;
+  --accent-gold: rgba(255, 191, 0, 0.2);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 10px var(--gold), 0 0 20px var(--accent-gold); }
+  50% { box-shadow: 0 0 15px var(--gold), 0 0 30px var(--accent-gold); }
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Space Grotesk', 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: hidden;
+  perspective: 1000px;
+}
+
+.dashboard {
+  text-align: center;
+  padding: 3rem;
+  animation: fadeInUp 1s ease;
+  background-color: var(--dark-grey); /* You can keep the dark grey background for contrast */
+  color: var(--gold); /* Change text color to golden */
+  border: 2px solid var(--gold); /* Add a golden border for emphasis */
+  box-shadow: 0 0 10px var(--gold), 0 0 20px var(--accent-gold); /* Add a soft golden glow */
+}
+
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  perspective: 1000px;
+}
+
+.component-tile {
+  background-color: var(--dark-grey);
+  border: 1px solid rgba(255, 191, 0, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.component-tile:hover {
+  transform: 
+    rotateX(4deg) 
+    rotateY(4deg) 
+    translateZ(50px);
+  border-color: var(--gold);
+  animation: glowPulse 2s infinite;
+}
+
+.component-image {
+  max-width: 80px;
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.component-tile:hover .component-image {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.component-title {
+  color: var(--gold);
+  transition: letter-spacing 0.3s ease;
+}
+
+.component-tile:hover .component-title {
+  letter-spacing: 0.1em;
+}
+
+.component-button {
+  display: inline-block;
+  background-color: var(--gold);
+  color: var(--black);
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.component-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, var(--white), transparent);
+  transition: all 0.5s;
+}
+
+.component-button:hover {
+  transform: scale(1.05) rotate(2deg);
+  background-color: var(--gold);
+  color: var(--black);
+  box-shadow: 0 0 20px var(--gold), 0 0 30px var(--accent-gold);
+}
+
+
+.component-button:hover::before {
+  left: 100%;
+}
+
+.component-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.component-modal {
+  background-color: var(--dark-grey);
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 0 30px var(--gold);
+  transform: scale(0.9);
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes popIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.7); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  color: var(--gold);
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  transform: scale(1.2) rotate(90deg);
+}
+
+.modal-image {
+  max-width: 120px;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.modal-title {
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.modal-description {
+  color: var(--white);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.modal-button {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .components-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+
+  .components-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .component-tile {
+    transform: none;
+  }
+}
+
+/* Performance optimization */
+.component-tile, 
+.component-image, 
+.component-button {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}

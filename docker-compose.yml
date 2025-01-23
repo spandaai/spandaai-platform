@@ -1,6 +1,20 @@
 version: '3.9'
 
 services:
+  components-explorer:
+    build:
+      context: ./components-explorer
+      dockerfile: Dockerfile
+    ports:
+      - "12345:80"
+    volumes:
+      - ./components-explorer:/app
+    environment:
+      - NODE_ENV=production
+    networks:
+      - platform_network
+      - app_network
+
   zookeeper:
     image: confluentinc/cp-zookeeper:7.8.0
     environment:
