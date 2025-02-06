@@ -1,0 +1,27 @@
+[submodule "components/components/promptfoo"]
+	path = components/components/promptfoo
+	url = https://github.com/spandaai/promptfoo
+[submodule "components/components/MegaParse"]
+	path = components/components/MegaParse
+	url = https://github.com/spandaai/MegaParse
+[submodule "components/components/mysql"]
+	path = components/components/mysql
+	url = https://github.com/spandaai/mysql
+[submodule "components/components/redis"]
+	path = components/components/redis
+	url = https://github.com/spandaai/redis
+[submodule "components/components/zookeeper"]
+	path = components/components/zookeeper
+	url = https://github.com/spandaai/zookeeper
+[submodule "components/components/vllm"]
+	path = components/components/vllm
+	url = https://github.com/spandaai/vllm
+[submodule "components/components/kafka"]
+	path = components/components/kafka
+	url = https://github.com/spandaai/kafka
+[submodule "components/components/langchain"]
+	path = components/components/langchain
+	url = https://github.com/spandaai/langchain
+[submodule "components/components/dockprom"]
+	path = components/components/dockprom
+	url = https://github.com/spandaai/dockprom
